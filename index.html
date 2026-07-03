@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Movie Night Bingo — Love Island USA S8</title>
 <style>
   :root{
@@ -100,14 +102,14 @@
   }
   .cellbtn{
     position:relative;
-    aspect-ratio:1/1.18;
+    min-height:70px;
     border-radius:12px;
     border:1.5px solid var(--cell-edge);
     background:linear-gradient(180deg,var(--cell) 0%, #241239 100%);
     color:var(--cream);
     font-family:var(--body);
     font-size:9.5px;line-height:1.25;font-weight:600;
-    padding:4px 3px;
+    padding:6px 3px;
     cursor:pointer;
     display:flex;align-items:center;justify-content:center;text-align:center;
     transition:transform .08s ease;
@@ -261,8 +263,8 @@
       'Sincere says the word “accountability”',
       'Someone tells their partner they don’t deserve them',
       'Sincere blames the edit (“that’s not the full clip”)',
-      'A recoupling ceremony actually happens (texts don’t count)',
-      'Kenzie gets confronted by more than one guy in the same night',
+      'An actual recoupling ceremony (texts don’t count)',
+      'Kenzie gets confronted by multiple guys in one night',
       'Kenzie cries — and it works',
       'A whisper-fight in bed while everyone pretends to sleep',
       'Sincere cries in the confessional',
@@ -270,7 +272,7 @@
       'Someone quotes Megan Thee Stallion’s villa advice',
       'Sincere goes in for a hug and gets denied',
       'Titi finally snaps at KC',
-      'A clip shows someone kissing several different people',
+      'A clip shows someone kissing several people',
       'Someone laughs at a clip they REALLY should not laugh at',
       'A “safe” couple suddenly starts wobbling'
     ],
@@ -286,7 +288,7 @@
       'Villain music under someone’s confessional',
       'Aniya claims she’s “unbothered” (she is visibly bothered)',
       'Melanie and Sincere officially call it quits',
-      'A clip shows someone kissing several different people',
+      'A clip shows someone kissing several people',
       'The girls flank Melanie like a presidential motorcade',
       'Someone tells their partner they don’t deserve them',
       'Two feuding islanders hug it out',
@@ -294,9 +296,9 @@
       'Sincere says the word “accountability”',
       'Amora says some version of “I said what I said”',
       'Someone frets about “how America is going to see me”',
-      'A recoupling ceremony actually happens (texts don’t count)',
+      'An actual recoupling ceremony (texts don’t count)',
       'Carl and KC have a tense man-to-man',
-      'Kenzie gets confronted by more than one guy in the same night',
+      'Kenzie gets confronted by multiple guys in one night',
       'Terrace debrief: sunglasses on, voices low',
       'Cutaway to an innocent animal after a bombshell'
     ],
@@ -308,10 +310,10 @@
       'An islander refers to themselves in the third person',
       'Amora and Melanie have a shockingly civil one-on-one',
       'A fire pit apology speech, hand on heart',
-      'A clip shows someone kissing several different people',
+      'A clip shows someone kissing several people',
       'KC digs the hole deeper with “at the end of the day”',
       'Kenzie apologizes — to anyone, for anything',
-      'Kenzie gets confronted by more than one guy in the same night',
+      'Kenzie gets confronted by multiple guys in one night',
       'Gal and Kenzie end up coupled up',
       'A clip so bad the whole villa gasps in unison',
       'The girls flank Melanie like a presidential motorcade',
@@ -338,7 +340,7 @@
       'Someone gets called “bro” by their own partner',
       'Someone laughs at a clip they REALLY should not laugh at',
       'A clip so bad the whole villa gasps in unison',
-      'Kenzie gets confronted by more than one guy in the same night',
+      'Kenzie gets confronted by multiple guys in one night',
       'Sincere blames the edit (“that’s not the full clip”)',
       'Someone is left standing alone at a recoupling',
       'Corbin brings up Kenzie unprompted (“I’m over it,” he lies)',
@@ -348,14 +350,14 @@
       'Carl and KC have a tense man-to-man',
       'Kenzie cries — and it works',
       'Terrace debrief: sunglasses on, voices low',
-      'A clip shows someone kissing several different people',
+      'A clip shows someone kissing several people',
       'Aniya and Carl kiss',
       'Someone storms off and a chaser is deployed'
     ],
     [
       'Amora and Melanie have a shockingly civil one-on-one',
       'KC digs the hole deeper with “at the end of the day”',
-      'Kenzie gets confronted by more than one guy in the same night',
+      'Kenzie gets confronted by multiple guys in one night',
       'Someone with zero clips all night looks unbearably smug',
       'A whisper-fight in bed while everyone pretends to sleep',
       'A “safe” couple suddenly starts wobbling',
@@ -365,7 +367,7 @@
       'Sincere blames the edit (“that’s not the full clip”)',
       'Sincere says the word “accountability”',
       'Dylan and Jen commiserate about being burned',
-      'A clip shows someone kissing several different people',
+      'A clip shows someone kissing several people',
       'A clip so bad the whole villa gasps in unison',
       'Debate over what “technically” counts as cheating',
       'Titi finally snaps at KC',
@@ -447,7 +449,7 @@
     for(let p=0;p<PLAYERS;p++){
       const b = document.createElement('button');
       b.className = 'tab' + (p===player?' on':'');
-      b.textContent = names[p] || ('Islander '+(p+1));
+      b.textContent = names[p] || ('Card '+(p+1));
       b.setAttribute('aria-pressed', p===player);
       b.addEventListener('click', ()=>{ player=p; save(); render(); });
       tabsEl.appendChild(b);
