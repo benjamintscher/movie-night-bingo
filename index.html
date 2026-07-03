@@ -1,0 +1,444 @@
+<title>Movie Night Bingo — Love Island USA S8</title>
+<style>
+  :root{
+    --night:#160B26;
+    --night-2:#221238;
+    --cell:#2B1745;
+    --cell-edge:#3D2260;
+    --pink:#FF3D8F;
+    --pink-soft:#FF7AB5;
+    --orange:#FFA24D;
+    --aqua:#3DE0D2;
+    --cream:#FFF1E4;
+    --cream-dim:#C9B4D6;
+    --display:'Arial Rounded MT Bold', ui-rounded, 'Hiragino Maru Gothic ProN', 'Trebuchet MS', sans-serif;
+    --body:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1100px 500px at 50% -150px, #4A1E5C 0%, transparent 60%),
+      radial-gradient(800px 400px at 110% 100%, #2A1550 0%, transparent 55%),
+      var(--night);
+    color:var(--cream);
+    font-family:var(--body);
+    min-height:100vh;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:28px 14px 60px}
+
+  /* ---------- neon hero ---------- */
+  .hero{text-align:center;margin-bottom:6px}
+  .hero .season{
+    font-family:var(--display);
+    font-size:12px;letter-spacing:.35em;text-transform:uppercase;
+    color:var(--orange);margin-bottom:10px;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:clamp(38px,11vw,54px);
+    line-height:.95;
+    margin:0;
+    text-transform:uppercase;
+    color:#fff;
+    text-shadow:
+      0 0 6px rgba(255,61,143,.9),
+      0 0 18px rgba(255,61,143,.7),
+      0 0 42px rgba(255,61,143,.5);
+    text-wrap:balance;
+  }
+  .hero h1 .line2{display:block;color:var(--pink);
+    text-shadow:0 0 6px rgba(255,255,255,.4),0 0 22px rgba(255,61,143,.8),0 0 60px rgba(255,61,143,.5);}
+  @keyframes flicker{
+    0%,91%,94%,97%,100%{opacity:1}
+    92%,95%{opacity:.55}
+  }
+  .hero h1 .line2{animation:flicker 7s infinite}
+  @media (prefers-reduced-motion: reduce){
+    .hero h1 .line2{animation:none}
+  }
+  .hero .sub{
+    margin:14px auto 0;max-width:40ch;
+    color:var(--cream-dim);font-size:14px;line-height:1.5;
+  }
+  .palms{font-size:20px;letter-spacing:14px;margin-top:10px;opacity:.85}
+
+  /* ---------- player tabs ---------- */
+  .tabs{display:flex;gap:8px;margin:26px 0 14px}
+  .tab{
+    flex:1;padding:10px 4px;border-radius:14px;
+    background:var(--night-2);
+    border:1.5px solid var(--cell-edge);
+    color:var(--cream-dim);
+    font-family:var(--display);font-size:13px;
+    text-align:center;cursor:pointer;user-select:none;
+    transition:transform .1s ease, border-color .15s ease, color .15s ease;
+    overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+  }
+  .tab:active{transform:scale(.96)}
+  .tab.on{
+    border-color:var(--pink);color:#fff;
+    background:linear-gradient(180deg,#3A1B54,#2B1745);
+    box-shadow:0 0 14px rgba(255,61,143,.35);
+  }
+  .tab:focus-visible,.cellbtn:focus-visible,.namebox:focus-visible,button:focus-visible{
+    outline:2px solid var(--aqua);outline-offset:2px;
+  }
+
+  .namebar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .namebox{
+    flex:1;background:transparent;border:none;border-bottom:1.5px dashed var(--cell-edge);
+    color:var(--cream);font-family:var(--display);font-size:18px;padding:4px 2px;
+  }
+  .namebox::placeholder{color:var(--cream-dim);opacity:.6}
+  .namehint{font-size:11px;color:var(--cream-dim);letter-spacing:.08em;text-transform:uppercase}
+
+  /* ---------- board ---------- */
+  .board{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:6px;
+  }
+  .cellbtn{
+    position:relative;
+    aspect-ratio:1/1.18;
+    border-radius:12px;
+    border:1.5px solid var(--cell-edge);
+    background:linear-gradient(180deg,var(--cell) 0%, #241239 100%);
+    color:var(--cream);
+    font-family:var(--body);
+    font-size:9.5px;line-height:1.25;font-weight:600;
+    padding:4px 3px;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    transition:transform .08s ease;
+    overflow:hidden;
+  }
+  @media (min-width:430px){ .cellbtn{font-size:10.5px} }
+  .cellbtn:active{transform:scale(.93)}
+  .cellbtn.marked{
+    border-color:var(--aqua);
+    background:linear-gradient(180deg,#0E4D48,#0A3A38);
+    color:#D8FFF9;
+    box-shadow:inset 0 0 18px rgba(61,224,210,.25), 0 0 10px rgba(61,224,210,.28);
+  }
+  .cellbtn.marked::after{
+    content:'💋';
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;opacity:.28;pointer-events:none;
+  }
+  .cellbtn.free{
+    border-color:var(--pink);
+    background:linear-gradient(180deg,#5A1240,#3E0C2E);
+    font-family:var(--display);font-size:12px;letter-spacing:.06em;color:var(--pink-soft);
+    flex-direction:column;gap:2px;
+  }
+  .cellbtn.free .heart{font-size:22px}
+  .cellbtn.hitline{
+    border-color:var(--orange);
+    box-shadow:0 0 12px rgba(255,162,77,.55), inset 0 0 14px rgba(255,162,77,.2);
+  }
+
+  /* ---------- bingo banner ---------- */
+  .banner{
+    display:none;
+    margin:16px 0 0;padding:16px 12px;border-radius:16px;text-align:center;
+    background:linear-gradient(135deg,#FF3D8F,#FF7A3D);
+    color:#fff;font-family:var(--display);
+    font-size:22px;font-style:italic;letter-spacing:.04em;
+    box-shadow:0 0 30px rgba(255,61,143,.5);
+  }
+  .banner.show{display:block;animation:pop .35s ease}
+  .banner small{display:block;font-size:12px;font-style:normal;letter-spacing:.12em;margin-top:6px;opacity:.9}
+  @keyframes pop{0%{transform:scale(.7);opacity:0}70%{transform:scale(1.06)}100%{transform:scale(1)}}
+  @media (prefers-reduced-motion: reduce){ .banner.show{animation:none} }
+
+  .toolbar{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+  .count{font-size:12px;color:var(--cream-dim);letter-spacing:.06em}
+  .count b{color:var(--aqua)}
+  .reset{
+    background:none;border:1.5px solid var(--cell-edge);color:var(--cream-dim);
+    border-radius:10px;padding:7px 12px;font-size:12px;font-family:var(--display);
+    cursor:pointer;
+  }
+  .reset:active{transform:scale(.95)}
+
+  /* ---------- hearts burst ---------- */
+  .burst{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+  .burst span{
+    position:absolute;top:-40px;font-size:26px;
+    animation:fall linear forwards;
+  }
+  @keyframes fall{
+    to{transform:translateY(110vh) rotate(340deg)}
+  }
+
+  /* ---------- rules ---------- */
+  .rules{margin-top:40px}
+  .rules h2, .catchup h2{
+    font-family:var(--display);font-style:italic;text-transform:uppercase;
+    font-size:18px;letter-spacing:.08em;color:var(--orange);
+    border-bottom:1.5px dashed var(--cell-edge);padding-bottom:8px;
+  }
+  .rules ol{padding-left:20px;line-height:1.65;font-size:14.5px;color:var(--cream)}
+  .rules li{margin-bottom:10px}
+  .rules li b{color:var(--pink-soft)}
+  .catchup{margin-top:34px}
+  .catchup p{font-size:13.5px;line-height:1.65;color:var(--cream-dim);max-width:60ch}
+  .catchup b{color:var(--cream)}
+  footer{margin-top:36px;text-align:center;font-size:11px;color:var(--cream-dim);opacity:.7;letter-spacing:.1em;text-transform:uppercase}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="season">Love Island USA · S8 · Ep tonight + tomorrow</div>
+    <h1>Movie&nbsp;Night<span class="line2">Bingo</span></h1>
+    <p class="sub">Four cards, one villa, zero loyalty. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
+    <div class="palms">🌴🍸🌴</div>
+  </header>
+
+  <nav class="tabs" id="tabs" aria-label="Choose your card"></nav>
+
+  <div class="namebar">
+    <input class="namebox" id="namebox" maxlength="14" placeholder="Type your name…" aria-label="Player name">
+    <span class="namehint">your card</span>
+  </div>
+
+  <div class="board" id="board" aria-label="Bingo card"></div>
+
+  <div class="banner" id="banner">💋 BINGO, BABE! 💋<small>Announce it. Gloat. Make it weird.</small></div>
+
+  <div class="toolbar">
+    <span class="count" id="count"></span>
+    <button class="reset" id="reset">Clear card</button>
+  </div>
+
+  <section class="rules">
+    <h2>Villa House Rules</h2>
+    <ol>
+      <li><b>One card each, both episodes.</b> Your card stays live through tonight’s Movie Night Part 2 <i>and</i> tomorrow’s fallout episode. No card swapping after the first “previously on.”</li>
+      <li><b>First bingo</b> (row, column, or diagonal) wins. You must yell <b>“I got a text!”</b> before your win counts. Mumbling voids it.</li>
+      <li><b>Disputed squares</b> go to a fire-pit vote (the couch). Majority rules. The person whose square it is doesn’t get a vote — this isn’t Casa Amor, there are standards.</li>
+      <li><b>Group square:</b> whenever <b>Sincere apologizes</b>, everyone takes a sip whether it’s on your card or not. Pace yourselves; the man apologizes a lot.</li>
+      <li><b>The Amora clause:</b> when the “you would have been the one” clip plays, the <b>first</b> person to gasp out loud marks any one square of their choice — but the other three vote on whether the gasp was genuine. Ruled fake or premeditated? You <i>lose</i> a marked square instead. Gasp with your heart or not at all.</li>
+      <li><b>Blackout bonus:</b> full card by the end of tomorrow’s episode and you pick the snacks — and the seating chart — for finale week. Losers do the dishes.</li>
+    </ol>
+  </section>
+
+  <section class="catchup">
+    <h2>The Situation Room</h2>
+    <p>Where we left off: Movie Night Part 1 torched the villa. <b>Sincere’s</b> Casa clips with Sol left <b>Melanie</b> in stunned silence, and tonight the trailer has her telling him he made her “look like an idiot” — with the <b>Amora</b> “you would have been the one” clip still locked and loaded. <b>Kenzie’s</b> highlight reel (Corbin → Caleb → Dylan → Gal, a full love pentagon) is queued up next. <b>KC</b> chose Titi over <b>Aniya</b>, America voted <b>Carl and Amora</b> back in via revenge cake, and Aniya is “unbothered.” She is extremely bothered. Enjoy the carnage.</p>
+  </section>
+
+  <footer>Made for four islanders on the couch · 💘</footer>
+</div>
+
+<div class="burst" id="burst" aria-hidden="true"></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- square pool: tonight & tomorrow specific + eternal tropes ---------- */
+  const POOL = [
+    // Melanie & Sincere meltdown
+    'Melanie tells Sincere he made her “look like an idiot”',
+    'Sincere apologizes… again',
+    'The Amora “you would have been the one” clip finally plays',
+    'Amora watches Sincere squirm with a tiny smirk',
+    'Melanie announces she’s “taking a step back”',
+    'Melanie cries in the confessional',
+    'Sincere says some version of “it looks bad, but…”',
+    'Sol’s name comes up and the whole room tenses',
+    // Kenzie pentagon
+    'Kenzie’s clips air: Corbin → Caleb → Dylan → Gal',
+    'Dylan pulls Kenzie for a chat after her clips',
+    'Corbin looks extremely vindicated',
+    'Someone calls Kenzie a “game player”',
+    'Gal gets dragged into drama he did not sign up for',
+    // KC / Titi / Aniya / Carl
+    'KC defends himself and makes it ten times worse',
+    'Titi rides for KC anyway',
+    'Aniya says she’s “unbothered” while visibly bothered',
+    'Aniya and Carl get flirty',
+    'Carl throws shade at KC',
+    'Zach and Kayda have a weird ambiguous moment',
+    // Movie Night physics
+    'Someone storms off mid–Movie Night',
+    'Villa-wide dead silence after a clip',
+    'A clip gets replayed for maximum damage',
+    'Villain music plays under someone’s confessional',
+    'Girls huddle to console the latest victim',
+    'Boys hold an emergency damage-control meeting',
+    'Fire pit summit after dark',
+    'Someone fake-laughs to hide the pain',
+    'Tears + a full mascara situation',
+    // Eternal Love Island tropes
+    '“I got a text!” screamed at full volume',
+    '“Can I pull you for a chat?”',
+    'Someone says “it is what it is”',
+    'Someone says “at the end of the day”',
+    '“I’m here for the right reasons”',
+    'The word “loyal” used as a weapon',
+    'Someone gets called “bro” by their own partner',
+    'Slow-mo abs or workout montage',
+    'Loud whispering while everyone “sleeps”',
+    'Ariana Madix struts in with bad news',
+    'Random cutaway to a lizard or bird after a bombshell',
+    'Someone says “100%” three times in one convo',
+    'Two islanders kiss during a challenge',
+    'Someone insists “we’re solid” (they are not solid)',
+    'Someone says “I’m so confused”',
+    'Group toast with plastic cups',
+    'Someone refers to themselves in the third person',
+    '“The villa is about to be turned UPSIDE DOWN”'
+  ];
+
+  const PLAYERS = 4;
+  const SIZE = 5;
+  const CELLS = SIZE*SIZE;
+  const FREE = 12; // center
+
+  /* seeded PRNG so each player's card is stable forever */
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function cardFor(p){
+    const rand = mulberry32(0xC0FFEE + p*7919);
+    const deck = POOL.slice();
+    for(let i=deck.length-1;i>0;i--){
+      const j = Math.floor(rand()*(i+1));
+      [deck[i],deck[j]] = [deck[j],deck[i]];
+    }
+    return deck.slice(0,24);
+  }
+
+  /* ---------- state ---------- */
+  const LS = 'li-s8-movienight-';
+  let player = +(localStorage.getItem(LS+'active') || 0);
+  const marks = [], names = [];
+  for(let p=0;p<PLAYERS;p++){
+    let m;
+    try{ m = JSON.parse(localStorage.getItem(LS+'marks'+p)) }catch(e){ m = null }
+    marks.push(Array.isArray(m) && m.length===CELLS ? m : Array(CELLS).fill(false));
+    marks[p][FREE] = true;
+    names.push(localStorage.getItem(LS+'name'+p) || '');
+  }
+  const announced = new Set(); // players whose bingo burst already fired this page-load
+
+  const tabsEl = document.getElementById('tabs');
+  const boardEl = document.getElementById('board');
+  const nameEl = document.getElementById('namebox');
+  const bannerEl = document.getElementById('banner');
+  const countEl = document.getElementById('count');
+  const burstEl = document.getElementById('burst');
+
+  const LINES = [];
+  for(let r=0;r<SIZE;r++) LINES.push([...Array(SIZE)].map((_,c)=>r*SIZE+c));
+  for(let c=0;c<SIZE;c++) LINES.push([...Array(SIZE)].map((_,r)=>r*SIZE+c));
+  LINES.push([0,6,12,18,24],[4,8,12,16,20]);
+
+  function winningCells(m){
+    const hit = new Set();
+    for(const line of LINES){
+      if(line.every(i=>m[i])) line.forEach(i=>hit.add(i));
+    }
+    return hit;
+  }
+
+  function save(){
+    localStorage.setItem(LS+'active', player);
+    localStorage.setItem(LS+'marks'+player, JSON.stringify(marks[player]));
+    localStorage.setItem(LS+'name'+player, names[player]);
+  }
+
+  function heartsBurst(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const glyphs = ['💘','💋','🌴','🍾','💔','😭'];
+    for(let i=0;i<26;i++){
+      const s = document.createElement('span');
+      s.textContent = glyphs[i % glyphs.length];
+      s.style.left = (Math.random()*100)+'vw';
+      s.style.animationDuration = (2.2+Math.random()*2)+'s';
+      s.style.animationDelay = (Math.random()*0.6)+'s';
+      burstEl.appendChild(s);
+      setTimeout(()=>s.remove(), 5200);
+    }
+  }
+
+  function renderTabs(){
+    tabsEl.innerHTML = '';
+    for(let p=0;p<PLAYERS;p++){
+      const b = document.createElement('button');
+      b.className = 'tab' + (p===player?' on':'');
+      b.textContent = names[p] || ('Islander '+(p+1));
+      b.setAttribute('aria-pressed', p===player);
+      b.addEventListener('click', ()=>{ player=p; save(); render(); });
+      tabsEl.appendChild(b);
+    }
+  }
+
+  function render(){
+    renderTabs();
+    nameEl.value = names[player];
+
+    const card = cardFor(player);
+    const m = marks[player];
+    const hits = winningCells(m);
+
+    boardEl.innerHTML = '';
+    let deckIdx = 0;
+    for(let i=0;i<CELLS;i++){
+      const b = document.createElement('button');
+      if(i===FREE){
+        b.className = 'cellbtn free' + (hits.has(i)?' hitline':'');
+        b.innerHTML = '<span class="heart">💘</span>FREE<br>VILLA';
+        b.disabled = true;
+      }else{
+        const text = card[deckIdx++];
+        b.className = 'cellbtn' + (m[i]?' marked':'') + (hits.has(i)?' hitline':'');
+        b.innerHTML = '<span>'+text+'</span>';
+        b.setAttribute('aria-pressed', !!m[i]);
+        b.addEventListener('click', ()=>{
+          m[i] = !m[i];
+          save();
+          render();
+        });
+      }
+      boardEl.appendChild(b);
+    }
+
+    const got = hits.size > 0;
+    bannerEl.classList.toggle('show', got);
+    if(got && !announced.has(player)){
+      announced.add(player);
+      heartsBurst();
+    }
+    if(!got) announced.delete(player);
+
+    const n = m.filter(Boolean).length - 1;
+    countEl.innerHTML = '<b>'+n+'</b> / 24 squares hit';
+  }
+
+  nameEl.addEventListener('input', ()=>{
+    names[player] = nameEl.value;
+    save();
+    renderTabs();
+  });
+
+  document.getElementById('reset').addEventListener('click', ()=>{
+    if(!confirm('Clear ' + (names[player]||'this') + ' card? This can’t be un-dumped.')) return;
+    marks[player] = Array(CELLS).fill(false);
+    marks[player][FREE] = true;
+    save();
+    render();
+  });
+
+  render();
+})();
+</script>
