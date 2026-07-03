@@ -65,9 +65,9 @@
   .palms{font-size:20px;letter-spacing:14px;margin-top:10px;opacity:.85}
 
   /* ---------- player tabs ---------- */
-  .tabs{display:flex;gap:8px;margin:26px 0 14px}
+  .tabs{display:flex;gap:6px;margin:26px 0 14px}
   .tab{
-    flex:1;padding:10px 4px;border-radius:14px;
+    flex:1;padding:10px 2px;border-radius:14px;min-width:0;
     background:var(--night-2);
     border:1.5px solid var(--cell-edge);
     color:var(--cream-dim);
@@ -193,7 +193,7 @@
   <header class="hero">
     <div class="season">Love Island USA · S8 · Ep tonight + tomorrow</div>
     <h1>Movie&nbsp;Night<span class="line2">Bingo</span></h1>
-    <p class="sub">Four cards, one villa, zero loyalty. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
+    <p class="sub">Five cards, one villa, zero loyalty. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
     <div class="palms">🌴🍸🌴</div>
   </header>
 
@@ -220,7 +220,7 @@
       <li><b>First bingo</b> (row, column, or diagonal) wins. You must yell <b>“I got a text!”</b> before your win counts. Mumbling voids it.</li>
       <li><b>Disputed squares</b> go to a fire-pit vote (the couch). Majority rules. The person whose square it is doesn’t get a vote — this isn’t Casa Amor, there are standards.</li>
       <li><b>Group square:</b> whenever <b>Sincere apologizes</b>, everyone takes a sip whether it’s on your card or not. Pace yourselves; the man apologizes a lot.</li>
-      <li><b>The Amora clause:</b> when the “you would have been the one” clip plays, the <b>first</b> person to gasp out loud marks any one square of their choice — but the other three vote on whether the gasp was genuine. Ruled fake or premeditated? You <i>lose</i> a marked square instead. Gasp with your heart or not at all.</li>
+      <li><b>The Amora clause:</b> when the “you would have been the one” clip plays, the <b>first</b> person to gasp out loud marks any one square of their choice — but the other four vote on whether the gasp was genuine. Ruled fake or premeditated? You <i>lose</i> a marked square instead. Gasp with your heart or not at all.</li>
       <li><b>Blackout bonus:</b> full card by the end of tomorrow’s episode and you pick the snacks — and the seating chart — for finale week. Losers do the dishes.</li>
     </ol>
   </section>
@@ -230,7 +230,7 @@
     <p>Where we left off: Movie Night Part 1 torched the villa. <b>Sincere’s</b> Casa clips with Sol left <b>Melanie</b> in stunned silence, and tonight the trailer has her telling him he made her “look like an idiot” — with the <b>Amora</b> “you would have been the one” clip still locked and loaded. <b>Kenzie’s</b> highlight reel (Corbin → Caleb → Dylan → Gal, a full love pentagon) is queued up next. <b>KC</b> chose Titi over <b>Aniya</b>, America voted <b>Carl and Amora</b> back in via revenge cake, and Aniya is “unbothered.” She is extremely bothered. Enjoy the carnage.</p>
   </section>
 
-  <footer>Made for four islanders on the couch · 💘</footer>
+  <footer>Made for five islanders on the couch · 💘</footer>
 </div>
 
 <div class="burst" id="burst" aria-hidden="true"></div>
@@ -241,60 +241,62 @@
 
   /* ---------- square pool: tonight & tomorrow specific + eternal tropes ---------- */
   const POOL = [
-    // Melanie & Sincere meltdown
-    'Melanie tells Sincere he made her “look like an idiot”',
-    'Sincere apologizes… again',
-    'The Amora “you would have been the one” clip finally plays',
-    'Amora watches Sincere squirm with a tiny smirk',
-    'Melanie announces she’s “taking a step back”',
-    'Melanie cries in the confessional',
-    'Sincere says some version of “it looks bad, but…”',
-    'Sol’s name comes up and the whole room tenses',
-    // Kenzie pentagon
-    'Kenzie’s clips air: Corbin → Caleb → Dylan → Gal',
-    'Dylan pulls Kenzie for a chat after her clips',
-    'Corbin looks extremely vindicated',
-    'Someone calls Kenzie a “game player”',
-    'Gal gets dragged into drama he did not sign up for',
+    // Melanie & Sincere: not IF she confronts him (that's promised) — what happens NEXT
+    'Melanie and Sincere officially call it quits',
+    'Melanie says “I’m done” and walks off mid-conversation',
+    'Sincere cries in the confessional',
+    'Sincere says the word “accountability”',
+    'Sincere blames the edit (“that’s not the full clip”)',
+    'Sincere goes in for a hug and gets denied',
+    'Someone tells Melanie “you deserve better”',
+    'Melanie flirts with another guy purely for revenge',
+    'The girls flank Melanie like a presidential motorcade',
+    // Amora: back in the villa with nothing to lose
+    'Amora shoots her shot at Sincere within a day of her clip',
+    'Amora says some version of “I said what I said”',
+    'Amora and Melanie have a shockingly civil one-on-one',
+    // Kenzie's pentagon: the clips will air — the fallout is the gamble
+    'Kenzie denies being a game player while actively gaming',
+    'Dylan and Gal compare notes on Kenzie',
+    'Kenzie cries — and it works',
+    'Corbin brings up Kenzie unprompted (“I’m over it,” he lies)',
+    'Kenzie ends the night in a different couple than she started',
     // KC / Titi / Aniya / Carl
-    'KC defends himself and makes it ten times worse',
-    'Titi rides for KC anyway',
-    'Aniya says she’s “unbothered” while visibly bothered',
-    'Aniya and Carl get flirty',
-    'Carl throws shade at KC',
-    'Zach and Kayda have a weird ambiguous moment',
-    // Movie Night physics
-    'Someone storms off mid–Movie Night',
-    'Villa-wide dead silence after a clip',
-    'A clip gets replayed for maximum damage',
-    'Villain music plays under someone’s confessional',
-    'Girls huddle to console the latest victim',
-    'Boys hold an emergency damage-control meeting',
-    'Fire pit summit after dark',
-    'Someone fake-laughs to hide the pain',
-    'Tears + a full mascara situation',
-    // Eternal Love Island tropes
-    '“I got a text!” screamed at full volume',
-    '“Can I pull you for a chat?”',
-    'Someone says “it is what it is”',
-    'Someone says “at the end of the day”',
-    '“I’m here for the right reasons”',
-    'The word “loyal” used as a weapon',
+    'KC digs the hole deeper with “at the end of the day”',
+    'Titi finally snaps at KC',
+    'Aniya and Carl kiss',
+    'Carl and KC have a tense man-to-man',
+    'Aniya claims she’s “unbothered” (she is visibly bothered)',
+    // Movie Night chaos: specifics, not certainties
+    'Someone storms off and a chaser is deployed',
+    'A clip so bad the whole villa gasps in unison',
+    'Someone laughs at a clip they REALLY should not laugh at',
+    'An islander demands to see a clip again',
+    'Someone with zero clips all night looks unbearably smug',
+    'A “safe” couple suddenly starts wobbling',
+    'Debate over what “technically” counts as cheating',
+    'Someone says the movie “isn’t over” like a threat',
+    // Fallout episode
+    'A dumping or recoupling text drops',
+    'Someone sleeps on the daybed out of spite',
+    'Terrace debrief: sunglasses on, voices low',
+    'A fire pit apology speech, hand on heart',
+    'Two feuding islanders hug it out',
+    // Tropes — kept only where they might NOT happen
     'Someone gets called “bro” by their own partner',
-    'Slow-mo abs or workout montage',
-    'Loud whispering while everyone “sleeps”',
-    'Ariana Madix struts in with bad news',
-    'Random cutaway to a lizard or bird after a bombshell',
-    'Someone says “100%” three times in one convo',
-    'Two islanders kiss during a challenge',
+    'An islander refers to themselves in the third person',
+    'Someone says “100%” three times in one conversation',
+    'Cutaway to an innocent animal after a bombshell',
+    'Villain music under someone’s confessional',
+    'A whisper-fight in bed while everyone pretends to sleep',
+    'Ariana Madix materializes with bad news',
     'Someone insists “we’re solid” (they are not solid)',
-    'Someone says “I’m so confused”',
-    'Group toast with plastic cups',
-    'Someone refers to themselves in the third person',
-    '“The villa is about to be turned UPSIDE DOWN”'
+    'The narrator personally disrespects Sincere',
+    'Someone quotes Megan Thee Stallion’s villa advice',
+    'Someone frets about “how America is going to see me”'
   ];
 
-  const PLAYERS = 4;
+  const PLAYERS = 5;
   const SIZE = 5;
   const CELLS = SIZE*SIZE;
   const FREE = 12; // center
@@ -319,7 +321,7 @@
   }
 
   /* ---------- state ---------- */
-  const LS = 'li-s8-movienight-';
+  const LS = 'li-s8-movienight-v2-';
   let player = +(localStorage.getItem(LS+'active') || 0);
   const marks = [], names = [];
   for(let p=0;p<PLAYERS;p++){
