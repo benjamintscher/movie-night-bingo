@@ -222,6 +222,7 @@
       <li><b>Group square:</b> whenever <b>Sincere apologizes</b>, everyone takes a sip whether it’s on your card or not. Pace yourselves; the man apologizes a lot.</li>
       <li><b>The Amora clause:</b> when the “you would have been the one” clip plays, the <b>first</b> person to gasp out loud marks any one square of their choice — but the other four vote on whether the gasp was genuine. Ruled fake or premeditated? You <i>lose</i> a marked square instead. Gasp with your heart or not at all.</li>
       <li><b>Blackout bonus:</b> full card by the end of tomorrow’s episode and you pick the snacks — and the seating chart — for finale week. Losers do the dishes.</li>
+      <li><b>No bingo by the final credits?</b> Most squares marked wins. Ties go to a fire-pit vote, and yes, campaigning is allowed.</li>
     </ol>
   </section>
 
@@ -240,60 +241,137 @@
   'use strict';
 
   /* ---------- square pool: tonight & tomorrow specific + eternal tropes ---------- */
-  const POOL = [
-    // Melanie & Sincere: not IF she confronts him (that's promised) — what happens NEXT
-    'Melanie and Sincere officially call it quits',
-    'Melanie says “I’m done” and walks off mid-conversation',
-    'Sincere cries in the confessional',
-    'Sincere says the word “accountability”',
-    'Sincere blames the edit (“that’s not the full clip”)',
-    'Sincere goes in for a hug and gets denied',
-    'Someone tells Melanie “you deserve better”',
-    'Melanie flirts with another guy purely for revenge',
-    'The girls flank Melanie like a presidential motorcade',
-    // Amora: back in the villa with nothing to lose
-    'Amora shoots her shot at Sincere within a day of her clip',
-    'Amora says some version of “I said what I said”',
-    'Amora and Melanie have a shockingly civil one-on-one',
-    // Kenzie's pentagon: the clips will air — the fallout is the gamble
-    'Kenzie denies being a game player while actively gaming',
-    'Dylan and Gal compare notes on Kenzie',
-    'Kenzie cries — and it works',
-    'Corbin brings up Kenzie unprompted (“I’m over it,” he lies)',
-    'Kenzie ends the night in a different couple than she started',
-    // KC / Titi / Aniya / Carl
-    'KC digs the hole deeper with “at the end of the day”',
-    'Titi finally snaps at KC',
-    'Aniya and Carl kiss',
-    'Carl and KC have a tense man-to-man',
-    'Aniya claims she’s “unbothered” (she is visibly bothered)',
-    // Movie Night chaos: specifics, not certainties
-    'Someone storms off and a chaser is deployed',
-    'A clip so bad the whole villa gasps in unison',
-    'Someone laughs at a clip they REALLY should not laugh at',
-    'An islander demands to see a clip again',
-    'Someone with zero clips all night looks unbearably smug',
-    'A “safe” couple suddenly starts wobbling',
-    'Debate over what “technically” counts as cheating',
-    'Someone says the movie “isn’t over” like a threat',
-    // Fallout episode
-    'A dumping or recoupling text drops',
-    'Someone sleeps on the daybed out of spite',
-    'Terrace debrief: sunglasses on, voices low',
-    'A fire pit apology speech, hand on heart',
-    'Two feuding islanders hug it out',
-    // Tropes — kept only where they might NOT happen
-    'Someone gets called “bro” by their own partner',
-    'An islander refers to themselves in the third person',
-    'Someone says “100%” three times in one conversation',
-    'Cutaway to an innocent animal after a bombshell',
-    'Villain music under someone’s confessional',
-    'A whisper-fight in bed while everyone pretends to sleep',
-    'Ariana Madix materializes with bad news',
-    'Someone insists “we’re solid” (they are not solid)',
-    'The narrator personally disrespects Sincere',
-    'Someone quotes Megan Thee Stallion’s villa advice',
-    'Someone frets about “how America is going to see me”'
+  const CARDS = [
+    [
+      'Someone storms off and a chaser is deployed',
+      'Someone gets called “bro” by their own partner',
+      'The girls flank Melanie like a presidential motorcade',
+      'Amora says some version of “I said what I said”',
+      'Cutaway to an innocent animal after a bombshell',
+      'KC digs the hole deeper with “at the end of the day”',
+      'Debate over what “technically” counts as cheating',
+      'A clip so bad the whole villa gasps in unison',
+      'Someone insists “we’re solid” (they are not solid)',
+      'Sincere says the word “accountability”',
+      'Someone tells their partner they don’t deserve them',
+      'Sincere apologizes… again',
+      'A recoupling ceremony actually happens (texts don’t count)',
+      'Kenzie gets confronted by more than one guy in the same night',
+      'Kenzie cries — and it works',
+      'A whisper-fight in bed while everyone pretends to sleep',
+      'Sincere cries in the confessional',
+      'Someone with zero clips all night looks unbearably smug',
+      'Someone quotes Megan Thee Stallion’s villa advice',
+      'Sincere goes in for a hug and gets denied',
+      'Titi finally snaps at KC',
+      'A clip shows someone kissing several different people',
+      'Someone laughs at a clip they REALLY should not laugh at',
+      'A “safe” couple suddenly starts wobbling'
+    ],
+    [
+      'Someone sleeps on the daybed out of spite',
+      'Someone says “100%” three times in one conversation',
+      'A clip so bad the whole villa gasps in unison',
+      'Corbin brings up Kenzie unprompted (“I’m over it,” he lies)',
+      'The narrator personally disrespects Sincere',
+      'Someone laughs at a clip they REALLY should not laugh at',
+      'Sincere blames the edit (“that’s not the full clip”)',
+      'Aniya and Carl kiss',
+      'Villain music under someone’s confessional',
+      'Aniya claims she’s “unbothered” (she is visibly bothered)',
+      'Melanie and Sincere officially call it quits',
+      'A clip shows someone kissing several different people',
+      'The girls flank Melanie like a presidential motorcade',
+      'Someone tells their partner they don’t deserve them',
+      'Two feuding islanders hug it out',
+      'Kenzie compares kissing to something non-romantic (again)',
+      'Sincere apologizes… again',
+      'Amora says some version of “I said what I said”',
+      'Someone frets about “how America is going to see me”',
+      'A recoupling ceremony actually happens (texts don’t count)',
+      'Carl and KC have a tense man-to-man',
+      'Kenzie gets confronted by more than one guy in the same night',
+      'Terrace debrief: sunglasses on, voices low',
+      'Cutaway to an innocent animal after a bombshell'
+    ],
+    [
+      'Sincere says the word “accountability”',
+      'Someone insists “we’re solid” (they are not solid)',
+      'Sincere apologizes… again',
+      'Someone storms off and a chaser is deployed',
+      'An islander refers to themselves in the third person',
+      'Amora and Melanie have a shockingly civil one-on-one',
+      'A fire pit apology speech, hand on heart',
+      'A clip shows someone kissing several different people',
+      'KC digs the hole deeper with “at the end of the day”',
+      'A whisper-fight in bed while everyone pretends to sleep',
+      'Kenzie gets confronted by more than one guy in the same night',
+      'Gal and Kenzie end up coupled up',
+      'A clip so bad the whole villa gasps in unison',
+      'The girls flank Melanie like a presidential motorcade',
+      'An islander demands to see a clip again',
+      'Sincere blames the edit (“that’s not the full clip”)',
+      'Someone tells their partner they don’t deserve them',
+      'Kenzie cries — and it works',
+      'Titi finally snaps at KC',
+      'Ariana Madix materializes with bad news',
+      'Amora shoots her shot at Sincere',
+      'Jen gets the cold-blooded last word',
+      'A “safe” couple suddenly starts wobbling',
+      'Someone gets called “bro” by their own partner'
+    ],
+    [
+      'Villain music under someone’s confessional',
+      'Debate over what “technically” counts as cheating',
+      'Someone tells their partner they don’t deserve them',
+      'Someone quotes Megan Thee Stallion’s villa advice',
+      'Aniya claims she’s “unbothered” (she is visibly bothered)',
+      'Cutaway to an innocent animal after a bombshell',
+      'Sincere goes in for a hug and gets denied',
+      'The girls flank Melanie like a presidential motorcade',
+      'Someone gets called “bro” by their own partner',
+      'Someone laughs at a clip they REALLY should not laugh at',
+      'A clip so bad the whole villa gasps in unison',
+      'Kenzie gets confronted by more than one guy in the same night',
+      'Sincere apologizes… again',
+      'Someone is left standing alone at a recoupling',
+      'Corbin brings up Kenzie unprompted (“I’m over it,” he lies)',
+      'Someone says “100%” three times in one conversation',
+      'Amora shoots her shot at Sincere',
+      'Someone insists “we’re solid” (they are not solid)',
+      'Carl and KC have a tense man-to-man',
+      'Kenzie cries — and it works',
+      'Terrace debrief: sunglasses on, voices low',
+      'A clip shows someone kissing several different people',
+      'Aniya and Carl kiss',
+      'Someone storms off and a chaser is deployed'
+    ],
+    [
+      'Amora and Melanie have a shockingly civil one-on-one',
+      'KC digs the hole deeper with “at the end of the day”',
+      'Kenzie gets confronted by more than one guy in the same night',
+      'Someone with zero clips all night looks unbearably smug',
+      'A whisper-fight in bed while everyone pretends to sleep',
+      'A “safe” couple suddenly starts wobbling',
+      'Someone says “100%” three times in one conversation',
+      'Someone tells their partner they don’t deserve them',
+      'Someone quotes Megan Thee Stallion’s villa advice',
+      'Sincere blames the edit (“that’s not the full clip”)',
+      'Sincere apologizes… again',
+      'Dylan and Jen commiserate about being burned',
+      'A clip shows someone kissing several different people',
+      'A clip so bad the whole villa gasps in unison',
+      'Debate over what “technically” counts as cheating',
+      'Titi finally snaps at KC',
+      'Melanie flirts with another guy purely for revenge',
+      'Someone gets called “bro” by their own partner',
+      'Someone is left standing alone at a recoupling',
+      'Kenzie compares kissing to something non-romantic (again)',
+      'The narrator personally disrespects Sincere',
+      'The girls flank Melanie like a presidential motorcade',
+      'Villain music under someone’s confessional',
+      'A fire pit apology speech, hand on heart'
+    ]
   ];
 
   const PLAYERS = 5;
@@ -301,27 +379,12 @@
   const CELLS = SIZE*SIZE;
   const FREE = 12; // center
 
-  /* seeded PRNG so each player's card is stable forever */
-  function mulberry32(a){
-    return function(){
-      a |= 0; a = a + 0x6D2B79F5 | 0;
-      let t = Math.imul(a ^ a >>> 15, 1 | a);
-      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-      return ((t ^ t >>> 14) >>> 0) / 4294967296;
-    };
-  }
   function cardFor(p){
-    const rand = mulberry32(0xC0FFEE + p*7919);
-    const deck = POOL.slice();
-    for(let i=deck.length-1;i>0;i--){
-      const j = Math.floor(rand()*(i+1));
-      [deck[i],deck[j]] = [deck[j],deck[i]];
-    }
-    return deck.slice(0,24);
+    return CARDS[p];
   }
 
   /* ---------- state ---------- */
-  const LS = 'li-s8-movienight-v2-';
+  const LS = 'li-s8-movienight-v3-';
   let player = +(localStorage.getItem(LS+'active') || 0);
   const marks = [], names = [];
   for(let p=0;p<PLAYERS;p++){
