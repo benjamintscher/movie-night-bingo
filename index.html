@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Villa Bingo — Sunday Edition</title>
+<title>Villa Bingo — Tuesday Edition</title>
 <style>
   :root{
     --night:#160B26;
@@ -191,9 +191,9 @@
 
 <div class="wrap">
   <header class="hero">
-    <div class="season">Love Island USA · S8 · Sunday Edition</div>
+    <div class="season">Love Island USA · S8 · Tuesday Edition</div>
     <h1>Villa<span class="line2">Bingo</span></h1>
-    <p class="sub">Two cards. One episode. No mercy. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
+    <p class="sub">Two cards. One episode. Finale week. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
     <div class="palms">🌴🍸🌴</div>
   </header>
 
@@ -237,56 +237,56 @@
   /* ---------- square pool: Sunday-night flavored + eternal tropes ---------- */
   const CARDS = [
     [
-      'The villa is forced to sing',
+      'The final-four fan vote opens',
       '“I got a text!” screamed at full volume',
       'Someone insists “we’re solid” (they are not solid)',
-      'Meeting-the-parents talk',
-      'Dumped islanders vow to keep seeing each other on the outside',
-      'Kenzie compares kissing to something non-romantic (again)',
-      'A performance so bad the whole villa cracks up',
-      'Cutaway to an innocent animal after a bombshell',
-      'Someone ends up in the pool',
+      'Iain the narrator explains the voting rules',
+      'Someone campaigns to camera: “please vote for us”',
+      'Sincere and Melanie have a heart-to-heart',
+      'Melanie brings up life in the real world',
+      'Cutaway to an innocent animal after a tense beat',
+      'Sincere’s movie-night lies get brought up again',
       'Sincere says the word “accountability”',
-      'Ariana Madix materializes',
-      'A song older than every single islander',
-      'Islanders forced to publicly pick a side',
-      'Tears at an elimination',
-      'Melanie gives Sincere a look that could freeze the pool',
-      'Someone forgets the words mid-performance',
+      'KC and Aniya rehash their trust issues',
+      'A conversation about confidence or self-worth',
+      'A rumor or flirtation rattles a couple',
+      'Someone says “day one” about a three-week-old bond',
       'Villain music under someone’s confessional',
-      'America’s vote puts couples in danger',
-      'Two feuding islanders hug it out',
-      'Someone gets called “bro” by their own partner',
+      'A montage of couples just… chatting',
+      'Talk of how close the finale is',
+      'Two islanders hug it out',
       'Terrace debrief: sunglasses on, voices low',
-      'A challenge win turns out to actually matter',
-      'Someone says “day one” about a person they met three weeks ago',
-      'A couple gets dumped'
+      'Someone gets called “bro” by their own partner',
+      'A whisper-conversation in bed',
+      'Someone frets about how America sees them',
+      'Aniya claims she’s “unbothered” (she is visibly bothered)',
+      'A declaration of love (or something close to it)'
     ],
     [
       'Aniya claims she’s “unbothered” (she is visibly bothered)',
-      'The narrator personally disrespects someone',
-      'Somebody does finale math (“we’re SO close”)',
-      'A whisper-fight in bed while everyone pretends to sleep',
-      'The villa is forced to sing',
-      'Someone ends up in the pool',
-      'Someone campaigns to camera for America’s vote',
-      'A performance ends in a kiss',
-      'Somebody gets fully lifted off the ground',
-      '“I got a text!” screamed at full volume',
-      'Someone can’t believe who America ranked above them',
+      'The final-four fan vote opens',
+      'Six couples named as up for America’s vote',
       'KC digs the hole deeper with “at the end of the day”',
-      'Islanders forced to publicly pick a side',
-      'Cutaway to an innocent animal after a bombshell',
-      'A toast “to finding love”',
-      'Kenzie cries — and it works',
-      'A couple gets dumped',
+      'A heart-to-heart on the terrace',
+      'Someone campaigns to camera: “please vote for us”',
+      'A conversation about colorism or confidence',
+      'Melanie is nervous about the real world',
+      '“I got a text!” screamed at full volume',
+      'Sincere tries to prove he’s changed',
+      'A rumor or flirtation rattles a couple',
+      'Cutaway to an innocent animal after a tense beat',
       'Someone insists “we’re solid” (they are not solid)',
-      'Villain music under someone’s confessional',
-      'Someone stands (almost) alone on the losing side of a vote',
-      'A secret rehearsal caught on camera',
+      'Talk of meeting each other’s families',
+      'Iain the narrator gets a dig in',
+      'A couple does finale math (“we’re SO close”)',
+      'Kenzie compares kissing to something non-romantic (again)',
+      'A toast “to finding love”',
       'Someone frets about how America sees them',
+      'A whisper-conversation in bed',
+      'Sincere says the word “accountability”',
       'Someone gets called “bro” by their own partner',
-      'A performance so bad the whole villa cracks up'
+      'Two islanders hug it out',
+      'A slow stretch fans would call “an email”'
     ]
   ];
 
@@ -296,7 +296,7 @@
   const FREE = 12; // center
 
   /* ---------- state ---------- */
-  const LS = 'li-s8-sunday-v1-';
+  const LS = 'li-s8-tuesday-v1-';
   const store = {
     get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
     set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
