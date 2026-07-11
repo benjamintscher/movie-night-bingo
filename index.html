@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Villa Bingo — Tuesday Edition</title>
+<title>Villa Bingo — Friday Edition</title>
 <style>
   :root{
     --night:#160B26;
@@ -191,9 +191,9 @@
 
 <div class="wrap">
   <header class="hero">
-    <div class="season">Love Island USA · S8 · Tuesday Edition</div>
+    <div class="season">Love Island USA · S8 · Friday Edition</div>
     <h1>Villa<span class="line2">Bingo</span></h1>
-    <p class="sub">Two cards. One episode. Finale week. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
+    <p class="sub">Two cards. One episode. Two days to the finale. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
     <div class="palms">🌴🍸🌴</div>
   </header>
 
@@ -237,56 +237,56 @@
   /* ---------- square pool: Sunday-night flavored + eternal tropes ---------- */
   const CARDS = [
     [
-      'The final-four fan vote opens',
+      'Families walk into the villa',
+      'An islander bursts into tears seeing their family',
+      'A couple gets dumped',
+      'A parent pulls their kid aside for a real talk',
+      'A partner sweats trying to win the family over',
+      'A family member grills their kid’s partner',
+      'A mom drops some brutally honest advice',
+      'Tears at a goodbye',
+      'A group hug that lasts a little too long',
+      'Someone asks a parent for their blessing',
+      'A family member clearly isn’t sold on a couple',
+      'A toast at the family dinner',
+      'A family member brings up earlier-season drama',
+      'A partner says “I love you” (or gets very close)',
+      'Happy tears during a reunion',
+      'A parent embarrasses their kid on camera',
+      'A couple learns they’re safe',
+      'Talk of what life looks like after the villa',
+      'Cutaway to an innocent animal at a big moment',
+      'A dumped couple vows to make it work on the outside',
+      'Someone promises to visit a partner’s hometown',
+      'The final four is locked in',
       '“I got a text!” screamed at full volume',
-      'Someone insists “we’re solid” (they are not solid)',
-      'Iain the narrator explains the voting rules',
-      'Someone campaigns to camera: “please vote for us”',
-      'Sincere and Melanie have a heart-to-heart',
-      'Melanie brings up life in the real world',
-      'Cutaway to an innocent animal after a tense beat',
-      'Sincere’s movie-night lies get brought up again',
-      'Sincere says the word “accountability”',
-      'KC and Aniya rehash their trust issues',
-      'A conversation about confidence or self-worth',
-      'A rumor or flirtation rattles a couple',
-      'Someone says “day one” about a three-week-old bond',
-      'Villain music under someone’s confessional',
-      'A montage of couples just… chatting',
-      'Talk of how close the finale is',
-      'Two islanders hug it out',
-      'Terrace debrief: sunglasses on, voices low',
-      'Someone gets called “bro” by their own partner',
-      'A whisper-conversation in bed',
-      'Someone frets about how America sees them',
-      'Aniya claims she’s “unbothered” (she is visibly bothered)',
-      'A declaration of love (or something close to it)'
+      'A sibling spills an embarrassing childhood story'
     ],
     [
-      'Aniya claims she’s “unbothered” (she is visibly bothered)',
-      'The final-four fan vote opens',
-      'Six couples named as up for America’s vote',
-      'KC digs the hole deeper with “at the end of the day”',
-      'A heart-to-heart on the terrace',
-      'Someone campaigns to camera: “please vote for us”',
-      'A conversation about colorism or confidence',
-      'Melanie is nervous about the real world',
+      'A loved one surprises an islander',
+      'A dad sizes up his daughter’s partner',
+      'A couple gets sent home',
+      'A partner meets the parents and absolutely nails it',
+      'A partner meets the parents and it’s awkward',
+      'A family member asks “do you actually trust them?”',
+      'A sibling shares an embarrassing childhood story',
+      'Ugly-crying at a goodbye',
+      'A heart-to-heart with a parent',
+      'Someone gets the family’s stamp of approval',
+      'A family member throws subtle shade at a partner',
+      'An islander thanks their family for showing up',
+      'A couple finds out their fate at dinner',
+      'A parent gives the relationship their blessing',
+      'Happy tears during a reunion',
+      'Someone reflects on how far they’ve come',
+      'A couple is told they’re safe',
+      'A couple talks about meeting up after the show',
+      'Cutaway to the villa’s resident animal',
+      'A partner promises a parent they’ll take care of their kid',
+      'An islander cries in the confessional',
+      'The final four is set',
       '“I got a text!” screamed at full volume',
-      'Sincere tries to prove he’s changed',
-      'A rumor or flirtation rattles a couple',
-      'Cutaway to an innocent animal after a tense beat',
-      'Someone insists “we’re solid” (they are not solid)',
-      'Talk of meeting each other’s families',
-      'Iain the narrator gets a dig in',
-      'A couple does finale math (“we’re SO close”)',
-      'Kenzie compares kissing to something non-romantic (again)',
-      'A toast “to finding love”',
-      'Someone frets about how America sees them',
-      'A whisper-conversation in bed',
-      'Sincere says the word “accountability”',
-      'Someone gets called “bro” by their own partner',
-      'Two islanders hug it out',
-      'A slow stretch fans would call “an email”'
+      'Someone says it’s the most real they’ve ever felt'
     ]
   ];
 
@@ -296,7 +296,7 @@
   const FREE = 12; // center
 
   /* ---------- state ---------- */
-  const LS = 'li-s8-tuesday-v1-';
+  const LS = 'li-s8-friday-v1-';
   const store = {
     get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
     set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
