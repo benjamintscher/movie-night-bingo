@@ -193,7 +193,7 @@
   <header class="hero">
     <div class="season">Love Island USA · S8 · The Finale</div>
     <h1>Villa<span class="line2">Bingo</span></h1>
-    <p class="sub">Two cards. One winning couple. $100,000 on the line. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
+    <p class="sub">Four cards. One winning couple. $100,000 on the line. Tap a square when it happens on screen. Five in a row — scream <b>“I GOT A TEXT!”</b> to claim your win.</p>
     <div class="palms">🌴🍸🌴</div>
   </header>
 
@@ -218,14 +218,14 @@
     <ol>
       <li><b>Pick your card before the “previously on.”</b> No swapping once the recap starts — loyalty matters here, unlike in the villa.</li>
       <li><b>First bingo</b> (row, column, or diagonal) wins the night. You must yell <b>“I got a text!”</b> before your win counts. Mumbling voids it.</li>
-      <li><b>Disputed squares:</b> pause the episode, both make your case in 15 seconds or less, then rock-paper-scissors. Best of one. Live with it.</li>
-      <li><b>Group square:</b> whenever <b>Sincere apologizes</b>, everyone takes a sip whether it’s on your card or not. House tradition. Non-negotiable.</li>
-      <li><b>Blackout bonus:</b> full card by the credits and you pick the snacks for the rest of finale week. Loser does the dishes either way.</li>
-      <li><b>No bingo by the final credits?</b> Most squares marked wins. A tie means you both rewatch the episode tomorrow and settle it on marked-square timestamps. Nobody wants that. Don’t tie.</li>
+      <li><b>Disputed squares:</b> pause the episode, everyone with a stake pleads their case in 15 seconds or less, then a group vote — the person whose square it is doesn’t get to vote. Majority rules, live with it.</li>
+      <li><b>Group square:</b> whenever <b>Sincere sheds a tear</b>, all four of you take a sip whether it’s on your card or not. House tradition. Non-negotiable.</li>
+      <li><b>Blackout bonus:</b> first full card wins the night outright and picks the next watch-party snacks. Everyone else fights over second.</li>
+      <li><b>No bingo by the final credits?</b> Most squares marked wins; ties go to a group vote (yes, campaigning is allowed).</li>
     </ol>
   </section>
 
-  <footer>Made for two islanders on the couch · 💘</footer>
+  <footer>Made for four islanders on the couch · 💘</footer>
 </div>
 
 <div class="burst" id="burst" aria-hidden="true"></div>
@@ -287,16 +287,68 @@
       'The winners are announced',
       '“I got a text!” screamed at full volume',
       'Everyone toasts to the winners'
+    ],
+    [
+      'The islanders arrive at the final party',
+      'A live band or performer sets the mood',
+      'The final two couples are revealed',
+      'A love letter that name-drops “day one”',
+      'Sincere promises he’s a changed man',
+      'Trinity & Bryce make everyone want to gag (sweetly)',
+      'Kayda swears mid-sentence out of pure joy',
+      'Champagne corks and confetti fly',
+      'Someone quotes a song lyric in their speech',
+      'A partner says “I’ve never felt this way”',
+      'Zach’s joke lands flat in a serious moment',
+      'Aniya gets emotional despite herself',
+      'Ariana teases the result before revealing it',
+      'A recap of each couple’s journey plays',
+      'Someone can’t get through their letter without crying',
+      'A shout-out to a dumped islander',
+      'A winner decides: split the $100k or steal it',
+      'Sincere mentions “accountability” one more time',
+      'The whole villa holds its breath',
+      'Melanie makes Sincere earn it',
+      'A couple reflects on how far they’ve come',
+      'The winning couple is crowned',
+      '“I got a text!” screamed at full volume',
+      'A toast to the season'
+    ],
+    [
+      'Everyone’s dressed to kill for the finale',
+      'Ariana Madix hosts in a showstopper look',
+      'The final two are announced',
+      'A heartfelt speech read off shaky notes',
+      'Carl reminds everyone he came in as a bombshell',
+      'Bryce says the cheesiest thing imaginable',
+      'Sincere sheds a tear right on cue',
+      'Confetti, champagne, chaos',
+      'A first “I love you” said out loud',
+      'A poem or spoken-word declaration',
+      'Kayda & Zach relive the “exclusive” debate',
+      'Aniya finally admits she cared the whole time',
+      'A montage of the season’s biggest moments',
+      'Ariana strolls out with the results',
+      'A dramatic pause that lasts forever',
+      'Someone thanks their family watching at home',
+      'The $100k envelopes come out',
+      'Melanie side-eyes Sincere one last time',
+      'A gasp when a placement is read',
+      'A couple promises to make it in the real world',
+      'Iain gets one last dig in',
+      'The winners are announced',
+      '“I got a text!” screamed at full volume',
+      'Everyone celebrates the winning couple'
     ]
   ];
 
-  const PLAYERS = 2;
+  const PLAYERS = 4;
   const SIZE = 5;
   const CELLS = SIZE*SIZE;
   const FREE = 12; // center
 
   /* ---------- state ---------- */
-  const LS = 'li-s8-finale-v1-';
+  const LS = 'li-s8-finale-v2-';
   const store = {
     get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } },
     set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} }
